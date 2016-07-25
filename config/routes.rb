@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   get "/users/new", to: "users#new", as: :sign_up
   post "/users/new", to: "users#create", as: :users
 
-  get "/links", to: "links#index", as: :links_index
+  patch "/links/:id", to: "links#update"
   get "/links/:id", to: "links#show", as: :link
+  get "/links", to: "links#index", as: :links_index
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
