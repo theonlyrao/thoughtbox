@@ -1,3 +1,11 @@
+.container {
+    padding: 20px;
+}
+
+form {
+    margin: 10px;
+}
+
 .link-read {
     text-decoration: line-through;
 }
