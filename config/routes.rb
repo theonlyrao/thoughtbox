@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace "v1" do
       get "/links", to: "links#index"
       post "/links", to: "links#create"
+      patch "/links/:id", to: "links#update"
     end
   end
   

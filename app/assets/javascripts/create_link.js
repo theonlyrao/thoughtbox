@@ -1,11 +1,78 @@
 $(document).ready(function(){
+
+    $(".link-list").delegate(".button-read", "click", function(){
+	console.log("clicked read")
+	var link_id = this.dataset.id
+	$.ajax({
+	    type: "PATCH",
+	    url: "/api/v1/links/" + link_id,
+	    data: { link: { read: false } },
+	    dataType: "json",
+	    success: getLinks
+	})    
+	
+    })
+
+    $(".link-list").delegate(".button-unread", "click", function(){
+	console.log("clicked unread")
+	var link_id = this.dataset.id
+	$.ajax({
+	    type: "PATCH",
+	    url: "/api/v1/links/" + link_id,
+	    data: { link: { read: true } },
+	    dataType: "json",
+	    success: getLinks
+	});
+    })
+
+    /* 
+     * $(".button-read").click(function(){
+       console.log("clicked read")
+       var link_id = this.dataset.id
+       $.ajax({
+       type: "PATCH",
+       url: "/api/v1/links/" + link_id,
+       data: { link: { read: false } },
+       dataType: "json",
+       success: getLinks
+       })    
+     * });
+
+     * $(".button-unread").click(function(){
+       console.log("clicked unread")
+       var link_id = this.dataset.id
+       $.ajax({
+       type: "PATCH",
+       url: "/api/v1/links/" + link_id,
+       data: { link: { read: true } },
+       dataType: "json",
+       success: getLinks
+       });
+
+     * });*/
+
+    
     var displayLink = function(link){
-	$(".link-list").append("<div>" + link.title + ", " + link.address + "</div>")
+	if(link.read === true){
+	    $(".link-list").append("<div class='link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button></div>")
+	} else {
+	    $(".link-list").append("<div class='link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button></div>")
+	}
     };
 
     var displayLinks = function(links){
+	$(".link-list").empty();
 	links.forEach(function(link){
 	    displayLink(link)
+	})
+    }
+
+    var getLinks = function(){
+	$.ajax({
+	    method: "GET",
+	    url: "/api/v1/links",
+	    dataType: "json",
+	    success: displayLinks
 	})
     }
     
@@ -33,7 +100,6 @@ $(document).ready(function(){
 	} else {
 	    $(".warning").replaceWith("Submit complete url, including http://www...")
 	}
-
-	
     });
+
 });
