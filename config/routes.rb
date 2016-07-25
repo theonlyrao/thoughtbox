@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
+  namespace :api, defaults: { format: :json } do
+    namespace "v1" do
+      post "/links", to: "links#create"
+    end
+  end
+  
   get "/login", to: "sessions#new", as: :login
   post "/login", to: "sessions#create", as: :new_session
   get "/logout", to: "sessions#destroy", as: :sign_out
@@ -10,6 +16,7 @@ Rails.application.routes.draw do
   post "/users/new", to: "users#create", as: :users
 
   get "/links", to: "links#index", as: :links_index
+  get "/links/:id", to: "links#show", as: :link
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
