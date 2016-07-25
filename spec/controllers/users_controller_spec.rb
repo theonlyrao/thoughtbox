@@ -7,4 +7,13 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to render_template(:new)
     end
   end
+
+  describe "POST #create" do
+    it "creates a new user" do
+      post :create, { user: {email: "controller_test@email.com", password: "password", confirmation: "password"} }
+
+      expect(User.last.email).to eq("controller_test@email.com")
+    end
+  end
+  
 end

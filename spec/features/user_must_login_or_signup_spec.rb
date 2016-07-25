@@ -18,11 +18,10 @@ RSpec.feature "UserMustLoginOrSignup", type: :feature do
       end
 
       expect(current_path).to eq sign_up_path
-
       within(".new-user") do
-        fill_in "email", with: "new@email.com"
-        fill_in "password", with: "password"
-        fill_in "confirmation", with: "password"
+        fill_in "Email", with: "new@email.com"
+        fill_in "Password", with: "password"
+        fill_in "Confirmation", with: "password"
         click_on "Create Account"
       end
 
