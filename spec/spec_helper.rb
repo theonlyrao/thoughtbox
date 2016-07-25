@@ -8,7 +8,7 @@ RSpec.configure do |config|
   end
 
   config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
+    mocks.verify_partial_doubles = false
   end
 
 end
