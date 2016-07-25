@@ -25,7 +25,7 @@ RSpec.feature "UserMustLoginOrSignup", type: :feature do
         click_on "Create Account"
       end
 
-      expect(current_path).to_eq links_index_path
+      expect(current_path).to eq links_index_path
     end
     
   end
