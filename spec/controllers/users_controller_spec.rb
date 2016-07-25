@@ -9,11 +9,20 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "POST #create" do
-    it "creates a new user" do
+    it "creates a new user with valid info" do
       post :create, { user: {email: "controller_test@email.com", password: "password", confirmation: "password"} }
 
       expect(User.last.email).to eq("controller_test@email.com")
     end
+
+    it "creates logged in user with info" do
+      post :create, { user: {email: "controller_test_two@email.com", password: "password", confirmation: "password"} }
+
+      expect(User.last.password).not_to eq(nil)
+      expect(User.last.password).to eq("password")
+      expect(current_user).to eq(User.last)
+    end
+
   end
   
 end

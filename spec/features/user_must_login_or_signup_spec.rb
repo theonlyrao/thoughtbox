@@ -21,7 +21,7 @@ RSpec.feature "UserMustLoginOrSignup", type: :feature do
       within(".new-user") do
         fill_in "Email", with: "new@email.com"
         fill_in "Password", with: "password"
-        fill_in "Confirmation", with: "password"
+        fill_in "Password confirmation", with: "password"
         click_on "Create Account"
       end
 
