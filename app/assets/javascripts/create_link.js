@@ -3,6 +3,20 @@ $(document).ready(function(){
 	$(".link-list").append("<div>" + link.title + ", " + link.address + "</div>")
     };
 
+    var displayLinks = function(links){
+	links.forEach(function(link){
+	    displayLink(link)
+	})
+    }
+    
+    $.ajax({
+	method: "GET",
+	url: "/api/v1/links",
+	dataType: "json",
+	success: displayLinks
+    })
+    
+
     $(".button").click(function(){
 	var title = $("#title").val();
 	var address = $("#address").val();

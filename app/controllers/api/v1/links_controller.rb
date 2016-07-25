@@ -4,6 +4,10 @@ class Api::V1::LinksController < ApiController
     respond_with Link.create!(link_params)
   end
 
+  def index
+    respond_with Link.all
+  end
+
   private
 
   def link_params
