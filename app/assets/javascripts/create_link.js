@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    let displayLink = function(link){
+    var displayLink = function(link){
 	$(".link-list").append("<div>" + link.title + ", " + link.address + "</div>")
     };
 
