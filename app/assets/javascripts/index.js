@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    $('input[type=radio][name=read]').change(function() {
+        if (this.value == 'true') {
+	    console.log("select read")
+        }
+        else if (this.value == 'false') {
+	    console.log("select unread")
+        }
+    });
+    
+    $("#search").keyup(function(){
+	var text = $(this).val();
+	var results = $(".link:contains(" + text + ")");
+	$(".link-list .link").hide();
+	results.show();
+    })
 
     $(".link-list").delegate(".button-read", "click", function(){
 	console.log("clicked read")
@@ -27,9 +42,9 @@ $(document).ready(function(){
     
     var displayLink = function(link){
 	if(link.read === true){
-	    $(".link-list").append("<div class='link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
+	    $(".link-list").append("<div class='link link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	} else {
-	    $(".link-list").append("<div class='link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
+	    $(".link-list").append("<div class='link link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	}
     };
 
