@@ -24,39 +24,12 @@ $(document).ready(function(){
 	    success: getLinks
 	});
     })
-
-    /* 
-     * $(".button-read").click(function(){
-       console.log("clicked read")
-       var link_id = this.dataset.id
-       $.ajax({
-       type: "PATCH",
-       url: "/api/v1/links/" + link_id,
-       data: { link: { read: false } },
-       dataType: "json",
-       success: getLinks
-       })    
-     * });
-
-     * $(".button-unread").click(function(){
-       console.log("clicked unread")
-       var link_id = this.dataset.id
-       $.ajax({
-       type: "PATCH",
-       url: "/api/v1/links/" + link_id,
-       data: { link: { read: true } },
-       dataType: "json",
-       success: getLinks
-       });
-
-     * });*/
-
     
     var displayLink = function(link){
 	if(link.read === true){
-	    $(".link-list").append("<div class='link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button></div>")
+	    $(".link-list").append("<div class='link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	} else {
-	    $(".link-list").append("<div class='link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button></div>")
+	    $(".link-list").append("<div class='link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	}
     };
 
@@ -89,7 +62,7 @@ $(document).ready(function(){
 	var address = $("#address").val();
 
 	
-	if(address.substring(0, 11) === "http://www." || address.substring(0, 12) === "https://www." && address.substring(address.length - 4 ) === ".com"){
+	if(( address.substring(0, 11) === "http://www." || address.substring(0, 12) === "https://www." ) && address.substring(address.length - 4 ) === ".com"){
 	    $.ajax({
 		type: "POST",
 		url: "/api/v1/links",
