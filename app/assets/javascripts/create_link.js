@@ -1,11 +1,12 @@
 $(document).ready(function(){
+    let displayLink = function(link){
+	$(".link-list").append("<div>" + link.title + ", " + link.address + "</div>")
+    };
+
     $(".button").click(function(){
 	var title = $("#title").val();
 	var address = $("#address").val();
 
-	let displayLink = function(link){
-	    $(".link-list").prepend("<div>" + link.title + ", " + link.address + "</div>")
-	};
 	
 	if(address.substring(0, 11) === "http://www." || address.substring(0, 12) === "https://www." && address.substring(address.length - 4 ) === ".com"){
 	    $.ajax({

@@ -22,5 +22,8 @@
 
 
 <section class="link-list">
+    <% @links.each do |link| %>
+	<div><%= "#{link.title}, #{link.address}" %></div>
+    <% end %>
 </section>
 
