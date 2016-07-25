@@ -17,7 +17,7 @@ RSpec.feature "UserMustLoginOrSignup", type: :feature do
         click_on "Sign Up"
       end
 
-      expect(current_path).to_eq sign_up_path
+      expect(current_path).to eq sign_up_path
 
       within(".new-user") do
         fill_in "email", with: "new@email.com"
