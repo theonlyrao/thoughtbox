@@ -15,7 +15,7 @@ RSpec.feature "UserCanLogins", type: :feature do
       end
 
       expect(current_path).to eq links_index_path
-      save_and_open_page
+      
       within(".header") do
         expect(page).to have_content("Sign Out")
       end
