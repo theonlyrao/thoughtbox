@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
+  get "/login", to: "sessions#new", as: :login
+  post "/login", to: "sessions#create", as: :new_session
+  get "/logout", to: "sessions#destroy", as: :sign_out
+
   get "/users/new", to: "users#new", as: :sign_up
   post "/users/new", to: "users#create", as: :users
 
