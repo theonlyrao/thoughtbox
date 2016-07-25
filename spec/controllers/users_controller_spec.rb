@@ -17,10 +17,11 @@ RSpec.describe UsersController, type: :controller do
 
     it "creates logged in user with info" do
       post :create, { user: {email: "controller_test_two@email.com", password: "password", confirmation: "password"} }
+      last_user = User.last
+      current_user = User.find(session[:user])
 
-      expect(User.last.password).not_to eq(nil)
-      expect(User.last.password).to eq("password")
-      expect(current_user).to eq(User.last)
+      expect(current_user).to eq(last_user)
+      expect(current_user.password).to eq("password")
     end
 
   end

@@ -27,6 +27,19 @@ RSpec.feature "UserMustLoginOrSignup", type: :feature do
 
       expect(current_path).to eq links_index_path
     end
-    
+
+    it "must giving matching password and confirmation" do
+      visit sign_up_path
+
+      within(".new-user") do
+        fill_in "Email", with: "new@email.com"
+        fill_in "Password", with: "password"
+        fill_in "Password confirmation", with: "something"
+        click_on "Create Account"
+      end
+
+      expect(current_path).to_not eq links_index_path
+    end
+
   end
 end
