@@ -1,4 +1,13 @@
 $(document).ready(function(){
+    $('input[type=radio][name=read]').change(function() {
+        if (this.value == 'true') {
+	    console.log("select read")
+        }
+        else if (this.value == 'false') {
+	    console.log("select unread")
+        }
+    });
+    
     $("#search").keyup(function(){
 	var text = $(this).val();
 	var results = $(".link:contains(" + text + ")");
