@@ -11,15 +11,15 @@ RSpec.feature "LoggedInUserCanCreateIdeas", type: :feature do
 
     visit links_index_path
 
-    within(".new-idea-form") do
+    within(".new-link-form") do
       fill_in "Title", with: "Test Idea"
-      fill_in "Url:", with: "www.google.com"
+      fill_in "Url:", with: "http://www.google.com"
       click_on "Save link"
     end
 
-    within(".idea-list") do
+    within(".link-list") do
       expect(page).to have_content("Test Idea")
-      expect(page).to have_content("www.google.com")
+      expect(page).to have_content("http://www.google.com")
     end
     
     
