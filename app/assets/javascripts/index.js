@@ -1,11 +1,16 @@
 $(document).ready(function(){
     $('input[type=radio][name=read]').change(function() {
         if (this.value == 'true') {
-	    console.log("select read")
+	    $(".link-list").children().show();
+	    $(".link-list .link-unread").hide();
         }
         else if (this.value == 'false') {
-	    console.log("select unread")
+	    $(".link-list").children().show();	    
+	    $(".link-list .link-read").hide();
         }
+	else if (this.value == "all"){
+	    getLinks();
+	}
     });
     
     $("#search").keyup(function(){
