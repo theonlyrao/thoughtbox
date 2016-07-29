@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $("#alphabetize").click(function(){
+	console.log("alphabetize")
+    })
+    
     $('input[type=radio][name=read]').change(function() {
         if (this.value == 'true') {
 	    $(".link-list").children().show();
@@ -47,9 +51,9 @@ $(document).ready(function(){
     
     var displayLink = function(link){
 	if(link.read === true){
-	    $(".link-list").append("<div class='link link-read'>" + link.title + ", " + link.address + "<button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
+	    $(".link-list").append("<div class='link link-read' ><div id="+link.title+">" + link.title + "</div> " + link.address + "<br /><button type='button' class='button-read' data-id=" + link.id + ">Mark as Unread</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	} else {
-	    $(".link-list").append("<div class='link link-unread'>" + link.title + ", " + link.address + "<button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
+	    $(".link-list").append("<div class='link link-unread'><div id="+link.title+">" + link.title + "</div> " + link.address + "<br /><button type='button' class='button-unread' data-id=" + link.id + ">Mark as Read</button><a href=" + "/links/" + link.id + " type='button' class='button-edit' data-id=" + link.id + ">Edit</a></div>")
 	}
     };
 
