@@ -7,5 +7,16 @@ form {
 }
 
 .link-read {
-    text-decoration: line-through;
+    background-color: gray;
+}
+
+.link {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 5px;
+    max-width: 50%;
+}
+
+button {
+    margin: 5px 20px 0px 0px;
 }
