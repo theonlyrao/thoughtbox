@@ -5,17 +5,27 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>    
   </head>
   <body>
+
+    <div class="header">
+      <ul>
+	<li id="home-link"><a href="/">Home</a></li>
+	<li id="links-link"><a href="/links">Links</a></li>
+	<li id="sign-out"><%= link_to "Sign Out", sign_out_path if current_user %></li>
+      </ul>
+    </div>
+    
     <% flash.each do |type, message| %>
-    <div>
+    <div id="flash">
       <%= message %>
     </div>
     <% end %>
-
+    
     <div class="container">
       <%= yield %>
-      </div>
+    </div>
 
   </body>
 </html>
