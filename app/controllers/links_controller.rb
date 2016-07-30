@@ -2,7 +2,7 @@ class LinksController < ApplicationController
 
   def index
     @link = Link.new
-    @links = Link.all
+    @links = current_user.links
   end
 
   def show

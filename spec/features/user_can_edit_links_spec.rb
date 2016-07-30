@@ -5,13 +5,12 @@ RSpec.feature "UserCanEditLinks", type: :feature do
   scenario "user has account and is logged in", js: true do
     email = "wow@new.com"
     user = User.create(email: email, password: "password")
-    visit login_path
-    fill_in "Email", with: email
-    fill_in "Password", with: "password"
-    click_on "Login"
+    ApiController.any_instance.stubs(:current_user).returns(user)
+    ApplicationController.any_instance.stubs(:current_user).returns(user)        
 
     google = Link.create(title: "google", address: "http://www.google.com")
-
+    user.links << google
+    
     visit links_index_path
 
     within(".link-list") do
@@ -27,21 +26,18 @@ RSpec.feature "UserCanEditLinks", type: :feature do
       click_on "Update Link"
     end
 
-    click_on "Back to Link Index"
-
-    expect(page).to have_content("old google")
+    expect(Link.last.title).to eq("old google")
   end
 
   scenario "user gives bad url", js: true do
     email = "wowbsdf@new.com"
     user = User.create(email: email, password: "password")
-    visit login_path
-    fill_in "Email", with: email
-    fill_in "Password", with: "password"
-    click_on "Login"
+    ApiController.any_instance.stubs(:current_user).returns(user)
+    ApplicationController.any_instance.stubs(:current_user).returns(user)        
 
     bing = Link.create(title: "bing", address: "http://www.bing.com")
-
+    user.links << bing
+    
     visit links_index_path
 
     within(".link-list") do

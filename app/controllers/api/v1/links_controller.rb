@@ -1,11 +1,14 @@
 class Api::V1::LinksController < ApiController
 
   def create
-    respond_with Link.create!(link_params)
+    new_link = Link.create!(link_params)
+    current_user.links << new_link
+    respond_with new_link
   end
 
   def index
-    respond_with Link.all
+    links = current_user.links
+    respond_with links
   end
 
   def update
