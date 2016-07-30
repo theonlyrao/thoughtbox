@@ -4,6 +4,8 @@ RSpec.feature "LoggedInUserCanCreateIdeas", type: :feature do
   scenario "user has account and is logged in", js: true do
     email = "brand@new.com"
     user = User.create(email: email, password: "password")
+    ApiController.any_instance.stubs(:current_user).returns(user)
+    ApplicationController.any_instance.stubs(:current_user).returns(user)        
     visit login_path
     fill_in "Email", with: email
     fill_in "Password", with: "password"
@@ -26,6 +28,8 @@ RSpec.feature "LoggedInUserCanCreateIdeas", type: :feature do
   scenario "submits invalid link", js: true do
     email = "again@new.com"
     user = User.create(email: email, password: "password")
+    ApiController.any_instance.stubs(:current_user).returns(user)
+    ApplicationController.any_instance.stubs(:current_user).returns(user)        
     visit login_path
     fill_in "Email", with: email
     fill_in "Password", with: "password"
