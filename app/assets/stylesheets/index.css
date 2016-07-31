@@ -1,5 +1,54 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+}
+
 .container {
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.header {
+    background-color: #F7F3E3;
+    border-bottom: 1px solid #6F1A07;
+    width: 100%;
+    height: 50px;
+}
+
+.header ul {
+    margin: 0px;
+}
+
+.header li {
+    display: inline;
+    float: left;
+    border-right: 1px solid #6F1A07;    
+}
+
+.header li a {
+    display: block;
+    background-color: #B3B6B7;
+    padding: 10px 10px 0px 10px;    
+    height: 40px;
+    width: auto;
+    min-width: 60px;
+    text-align: center;
+    color: #2B2118;
+    text-decoration: none;    
+}
+
+.header li a:hover {
+    background-color: #AF9164;
+}
+
+#home-link {
+    border-left: 1px solid #6F1A07;
+}
+
+#sign-out {
+    float: right;
+    padding-right: 10px;
+    border-left: 1px solid #6F1A07;
 }
 
 form {
@@ -7,16 +56,41 @@ form {
 }
 
 .link-read {
-    background-color: gray;
+    background-color: #B3B6B7;
 }
 
 .link {
     margin-bottom: 10px;
     border: 1px solid black;
     padding: 5px;
-    max-width: 50%;
+    max-width: 100%;
 }
 
 button {
     margin: 5px 20px 0px 0px;
+}
+
+.link-control {
+    float: left;
+    width: 20%;
+    border: 1px solid #6F1A07;
+    padding-left: 10px;
+    background-color: #F7F3E3;
+}
+
+.link-list {
+    float: left;
+    width: 60%;
+    margin-left: 20px;
+}
+
+.modify form {
+    float: left;
+    border-right: 1px solid #6F1A07;
+    padding-right: 10px;
+}
+
+.modify #alpha-button {
+    float: left;
+    padding-top: 30px;
 }

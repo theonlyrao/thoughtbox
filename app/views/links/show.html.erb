@@ -1,7 +1,5 @@
 <h1>Link Show/Edit Page</h1>
 
-<%= link_to "Back to Link Index", links_index_path %>
-
 <%= form_for @link, :html => {:class => 'link-info'} do |f| %>
     <%= f.label :title %>:
     <%= f.text_field(:title, placeholder: "#{@link.title}") %><br />
