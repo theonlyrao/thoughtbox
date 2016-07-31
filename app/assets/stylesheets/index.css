@@ -56,16 +56,41 @@ form {
 }
 
 .link-read {
-    background-color: gray;
+    background-color: #B3B6B7;
 }
 
 .link {
     margin-bottom: 10px;
     border: 1px solid black;
     padding: 5px;
-    max-width: 50%;
+    max-width: 100%;
 }
 
 button {
     margin: 5px 20px 0px 0px;
+}
+
+.link-control {
+    float: left;
+    width: 20%;
+    border: 1px solid #6F1A07;
+    padding-left: 10px;
+    background-color: #F7F3E3;
+}
+
+.link-list {
+    float: left;
+    width: 60%;
+    margin-left: 20px;
+}
+
+.modify form {
+    float: left;
+    border-right: 1px solid #6F1A07;
+    padding-right: 10px;
+}
+
+.modify #alpha-button {
+    float: left;
+    padding-top: 30px;
 }
