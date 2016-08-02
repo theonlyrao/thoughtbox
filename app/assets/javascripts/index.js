@@ -22,14 +22,17 @@ var displayLinks = function(links){
     })
 }
 
-$(document).ready(function(){
+var loadLinks = function(){
     $.ajax({
 	method: "GET",
 	url: "/api/v1/links",
 	dataType: "json",
 	success: displayLinks
     })
+}
 
+$(document).ready(function(){
+    loadLinks();
     alphabetize();
     filter();
     search();
