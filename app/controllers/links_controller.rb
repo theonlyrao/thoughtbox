@@ -18,6 +18,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.update(link_params)
     if @link.save
+      flash[:success] = "Link updated!"
       redirect_to link_path(@link)
     else
       flash[:error] = @link.errors.full_messages.join(", ")
