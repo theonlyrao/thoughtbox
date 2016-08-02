@@ -12,13 +12,13 @@
     <div class="header">
       <ul>
 	<li id="home-link"><a href="/">Home</a></li>
-	<li id="links-link"><a href="/links">Links</a></li>
+	<li id="links-link"><%= link_to "Links", links_index_path if current_user %></li>
 	<li id="sign-out"><%= link_to "Sign Out", sign_out_path if current_user %></li>
       </ul>
     </div>
     
     <% flash.each do |type, message| %>
-    <div id="flash">
+    <div class="flash" id="flash-<%= type %>">
       <%= message %>
     </div>
     <% end %>

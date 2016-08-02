@@ -1,8 +1,13 @@
 class LinksController < ApplicationController
 
   def index
-    @link = Link.new
-    @links = current_user.links
+    if current_user
+      @link = Link.new
+      @links = current_user.links
+    else
+      flash[:error] = "Please sign in to see your links."
+      redirect_to root_path
+    end
   end
 
   def show
@@ -13,6 +18,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.update(link_params)
     if @link.save
+      flash[:success] = "Link updated!"
       redirect_to link_path(@link)
     else
       flash[:error] = @link.errors.full_messages.join(", ")

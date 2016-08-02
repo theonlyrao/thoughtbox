@@ -27,6 +27,9 @@ RSpec.feature "UserCanEditLinks", type: :feature do
     end
 
     expect(Link.last.title).to eq("old google")
+    within(".flash") do
+      expect(page).to have_content("Link updated!")
+    end
   end
 
   scenario "user gives bad url", js: true do
