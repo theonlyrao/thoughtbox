@@ -22,37 +22,13 @@ var displayLinks = function(links){
     })
 }
 
-
 $(document).ready(function(){
     alphabetize();
     filter();
     search();
-    
+    markRead();
+    markUnread();
 
-    $(".link-list").delegate(".button-read", "click", function(){
-	console.log("clicked read")
-	var link_id = this.dataset.id
-	$.ajax({
-	    type: "PATCH",
-	    url: "/api/v1/links/" + link_id,
-	    data: { link: { read: false } },
-	    dataType: "json",
-	    success: getLinks
-	})    
-	
-    })
-
-    $(".link-list").delegate(".button-unread", "click", function(){
-	console.log("clicked unread")
-	var link_id = this.dataset.id
-	$.ajax({
-	    type: "PATCH",
-	    url: "/api/v1/links/" + link_id,
-	    data: { link: { read: true } },
-	    dataType: "json",
-	    success: getLinks
-	});
-    })
     
 
     
