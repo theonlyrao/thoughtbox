@@ -1,8 +1,13 @@
 class LinksController < ApplicationController
 
   def index
-    @link = Link.new
-    @links = current_user.links
+    if current_user
+      @link = Link.new
+      @links = current_user.links
+    else
+      flash[:error] = "Please sign in to see your links."
+      redirect_to root_path
+    end
   end
 
   def show
