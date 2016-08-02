@@ -26,14 +26,8 @@ var displayLinks = function(links){
 $(document).ready(function(){
     alphabetize();
     filter();
+    search();
     
-    
-    $("#search").keyup(function(){
-	var text = $(this).val();
-	var results = $(".link:contains(" + text + ")");
-	$(".link-list .link").hide();
-	results.show();
-    })
 
     $(".link-list").delegate(".button-read", "click", function(){
 	console.log("clicked read")
