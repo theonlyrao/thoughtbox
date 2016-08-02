@@ -32,7 +32,7 @@ var loadLinks = function(){
 }
 
 $(document).ready(function(){
-    loadLinks();
+    if (window.location.pathname === "/links") { loadLinks(); }
     alphabetize();
     filter();
     search();
